@@ -1,0 +1,17 @@
+{
+  "name": "rtp6688",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "backend": "python -m uvicorn backend:app --host 0.0.0.0 --port 8000",
+    "frontend": "cd gov-ai-frontend && npm start",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}

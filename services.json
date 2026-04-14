@@ -1,0 +1,290 @@
+[
+  {
+    "service_name": "Income Certificate",
+    "description": "This certificate helps prove your family's annual income. It is commonly required for scholarships, fee reimbursements, and welfare schemes.",
+    "documents": ["Aadhaar Card", "Ration Card", "Income Proof", "Address Proof"],
+    "fee": "₹15 – ₹50",
+    "processing_time": "7–15 working days",
+    "office": "Tahsildar / MeeSeva Center",
+    "apply_link": "https://ts.meeseva.telangana.gov.in",
+    "application_steps": [
+      "Visit nearest MeeSeva or Tahsildar office",
+      "Fill application form",
+      "Attach required documents",
+      "Submit with fee",
+      "Receive acknowledgment",
+      "Certificate issued after verification"
+    ],
+    "forms": [
+      { "name": "Income Certificate Form", "pages": ["forms/income_certificate.png"] }
+    ]
+  },
+  {
+    "service_name": "Caste Certificate",
+    "description": "This certificate verifies your caste and is used for reservations in education, jobs, and government schemes.",
+    "documents": ["Aadhaar Card", "School Certificate", "Parent Certificate"],
+    "fee": "₹15 – ₹50",
+    "processing_time": "15–30 days",
+    "office": "Tahsildar Office",
+    "apply_link": "https://ts.meeseva.telangana.gov.in",
+    "application_steps": [
+      "Visit MeeSeva center",
+      "Collect caste certificate form",
+      "Fill and attach documents",
+      "Submit application",
+      "Revenue officer verification",
+      "Certificate issued"
+    ],
+    "forms": [
+      { "name": "Caste Certificate Form", "pages": ["forms/caste_certificate.png"] }
+    ]
+  },
+  {
+    "service_name": "Birth Certificate",
+    "description": "A legal record of birth required for school admission, passports, and identity proof.",
+    "documents": ["Hospital Slip", "Parent ID Proof"],
+    "fee": "Free / ₹10",
+    "processing_time": "7–15 days",
+    "office": "Municipality / Panchayat",
+    "apply_link": "https://crsorgi.gov.in",
+    "application_steps": [
+      "Register birth at municipal office or online",
+      "Fill birth registration form",
+      "Submit hospital proof",
+      "Attach parents ID proof",
+      "Verification process",
+      "Certificate issued"
+    ],
+    "forms": [
+      { "name": "Birth Certificate Form", "pages": ["forms/birth_certificate.png"] }
+    ]
+  },
+  {
+    "service_name": "Death Certificate",
+    "description": "Legal document confirming death, required for insurance, inheritance, and legal processes.",
+    "documents": ["Hospital Certificate", "ID Proof"],
+    "fee": "Free / ₹10",
+    "processing_time": "7–15 days",
+    "office": "Municipality",
+    "apply_link": "https://crsorgi.gov.in",
+    "application_steps": [
+      "Report death to municipality",
+      "Fill registration form",
+      "Submit hospital certificate",
+      "Provide ID proof",
+      "Verification",
+      "Certificate issued"
+    ],
+    "forms": [
+      { "name": "Death Certificate Form", "pages": ["forms/death_certificate.png"] }
+    ]
+  },
+  {
+    "service_name": "Ration Card",
+    "description": "Government card that provides subsidized food grains and essential items.",
+    "documents": ["Aadhaar Card", "Address Proof", "Income Proof"],
+    "fee": "Free",
+    "processing_time": "15–30 days",
+    "office": "Civil Supplies Department",
+    "apply_link": "https://ts.meeseva.telangana.gov.in",
+    "application_steps": [
+      "Visit MeeSeva or ration office",
+      "Fill application form",
+      "Attach family documents",
+      "Submit application",
+      "Field verification",
+      "Card issued"
+    ],
+    "forms": [
+      { "name": "Ration Card Form", "pages": ["forms/ration_card.jpg"] }
+    ]
+  },
+  {
+    "service_name": "Aadhaar Update",
+    "description": "Used to update personal details like name, address, or date of birth in Aadhaar.",
+    "documents": ["Aadhaar Card", "Supporting Proof"],
+    "fee": "₹50 – ₹100",
+    "processing_time": "7–30 days",
+    "office": "Aadhaar Seva Kendra",
+    "apply_link": "https://myaadhaar.uidai.gov.in",
+    "application_steps": [
+      "Visit Aadhaar center",
+      "Fill update form",
+      "Submit documents",
+      "Biometric verification",
+      "Submit request",
+      "Updated Aadhaar issued"
+    ],
+    "forms": [
+      { "name": "Aadhaar Update Form", "pages": ["forms/aadhar_card.png"] }
+    ]
+  },
+  {
+    "service_name": "Driving License",
+    "description": "Legal permission required to drive vehicles on Indian roads.",
+    "documents": ["Aadhaar", "Learner License"],
+    "fee": "₹200 – ₹300",
+    "processing_time": "15–30 days",
+    "office": "RTO",
+    "apply_link": "https://parivahan.gov.in",
+    "application_steps": [
+      "Apply for learner license",
+      "Practice driving",
+      "Book driving test",
+      "Appear for test",
+      "Pass driving test",
+      "Receive license"
+    ],
+    "forms": [
+      { "name": "Driving License Form", "file": "forms/driving_license.pdf" }
+    ]
+  },
+  {
+    "service_name": "PAN Card",
+    "description": "Financial identity used for banking, taxes, and income tracking.",
+    "documents": ["Aadhaar", "Photograph"],
+    "fee": "₹93",
+    "processing_time": "7–15 days",
+    "office": "Income Tax Department",
+    "apply_link": "https://www.onlineservices.nsdl.com",
+    "application_steps": [
+      "Visit NSDL portal",
+      "Fill PAN form",
+      "Upload documents",
+      "Pay fee",
+      "Verification",
+      "PAN delivered"
+    ],
+    "forms": [
+      { "name": "PAN Card Form", "pages": ["forms/pan_card.jpg"] }
+    ]
+  },
+  {
+    "service_name": "Property Tax",
+    "description": "Tax paid by property owners for municipal services like roads, water, and sanitation.",
+    "documents": ["Property Documents"],
+    "fee": "Varies",
+    "processing_time": "Instant",
+    "office": "Municipality",
+    "apply_link": "https://cdma.telangana.gov.in",
+    "application_steps": [
+      "Visit municipal or online portal",
+      "Enter property details",
+      "Check tax amount",
+      "Pay tax online/offline",
+      "Download receipt",
+      "Annual renewal"
+    ],
+    "forms": [
+      {
+        "name": "Property Tax Form",
+        "pages": [
+          "forms/propertytax_certificate.jpg",
+          "forms/propertytax_certificate_page2.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "service_name": "Voter ID (EPIC)",
+    "description": "Identity card that allows citizens to vote in elections.",
+    "documents": ["Aadhaar", "Address Proof", "Age Proof"],
+    "fee": "Free",
+    "processing_time": "15–30 days",
+    "office": "Election Commission",
+    "apply_link": "https://www.nvsp.in",
+    "application_steps": [
+      "Register on NVSP portal",
+      "Fill voter form",
+      "Upload documents",
+      "Verification by officer",
+      "Field inspection",
+      "Voter ID issued"
+    ]
+  },
+  {
+    "service_name": "Marriage Certificate",
+    "description": "Legal proof of marriage required for visa, insurance, and official records.",
+    "documents": ["Aadhaar", "Photos", "Marriage Proof"],
+    "fee": "₹100",
+    "processing_time": "15–30 days",
+    "office": "Sub-Registrar Office",
+    "apply_link": "https://registration.telangana.gov.in",
+    "application_steps": [
+      "Visit sub-registrar office",
+      "Fill marriage registration form",
+      "Submit documents",
+      "Witness verification",
+      "Register marriage",
+      "Certificate issued"
+    ]
+  },
+  {
+    "service_name": "Pension Certificate",
+    "description": "Financial support for senior citizens and eligible welfare beneficiaries.",
+    "documents": ["Aadhaar", "Bank Details"],
+    "fee": "Free",
+    "processing_time": "30 days",
+    "office": "Welfare Department",
+    "apply_link": "https://ssp.telangana.gov.in",
+    "application_steps": [
+      "Visit welfare office or portal",
+      "Fill pension form",
+      "Submit documents",
+      "Verification process",
+      "Approval",
+      "Monthly pension starts"
+    ]
+  },
+  {
+    "service_name": "Scholarship Application",
+    "description": "Financial aid for students based on merit or income eligibility.",
+    "documents": ["Aadhaar", "Income Certificate", "Marks Memo"],
+    "fee": "Free",
+    "processing_time": "30–60 days",
+    "office": "Education Department",
+    "apply_link": "https://telanganaepass.cgg.gov.in",
+    "application_steps": [
+      "Register on scholarship portal",
+      "Fill application form",
+      "Upload documents",
+      "Submit application",
+      "Verification",
+      "Scholarship approved"
+    ]
+  },
+  {
+    "service_name": "Water Connection",
+    "description": "Service to get new water supply connection for home or business.",
+    "documents": ["Property Proof", "ID Proof"],
+    "fee": "₹500",
+    "processing_time": "15–30 days",
+    "office": "Water Board",
+    "apply_link": "https://www.hyderabadwater.gov.in",
+    "application_steps": [
+      "Apply online or office",
+      "Submit connection form",
+      "Attach property proof",
+      "Inspection by officials",
+      "Payment of fee",
+      "Connection provided"
+    ]
+  },
+  {
+    "service_name": "Electricity Connection",
+    "description": "Required for getting new electricity supply for residential or commercial use.",
+    "documents": ["Address Proof", "ID Proof"],
+    "fee": "₹1000",
+    "processing_time": "7–15 days",
+    "office": "Electricity Department",
+    "apply_link": "https://www.tssouthernpower.com",
+    "application_steps": [
+      "Apply through electricity board portal",
+      "Fill application form",
+      "Submit identity documents",
+      "Site inspection",
+      "Pay connection charges",
+      "Electricity connection activated"
+    ]
+  }
+]

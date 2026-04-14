@@ -1,0 +1,14 @@
+<script>
+function askQuery() {
+    let userQuery = document.getElementById("query").value;
+    fetch("/get_answer", {
+        method: "POST",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: "query=" + encodeURIComponent(userQuery)
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("answer").innerText = data.response;
+    });
+}
+</script>

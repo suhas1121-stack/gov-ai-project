@@ -1,0 +1,19 @@
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+
+# Database
+chroma_db/
+
+# Environment
+.env
+
+# React build
+build/
+
+# OS
+.DS_Store
+Thumbs.db
