@@ -1,1 +1,6 @@
-
+streamlit
+chromadb
+ollama
+speechrecognition
+pyaudio
+json5
