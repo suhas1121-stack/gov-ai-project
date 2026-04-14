@@ -4,3 +4,5 @@ ollama
 speechrecognition
 pyaudio
 json5
+numpy
+pandas
