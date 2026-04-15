@@ -15,7 +15,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ---------------- DB ----------------
+#DATABASE AND PATH...................
 client = chromadb.PersistentClient(path="./chroma_db")
 collection = client.get_collection("services")
 
@@ -30,7 +30,7 @@ async def ask_question(data: QueryRequest):
     query = data.query
     query_lower = query.lower()
 
-    # ---------------- FETCH ----------------
+    #DETAILS FETCHING........................
     results = collection.query(
         query_texts=[query],
         n_results=3
@@ -45,7 +45,7 @@ async def ask_question(data: QueryRequest):
     context = documents[0]
     metadata = {}
 
-    # ---------------- 🔥 FIND CORRECT SERVICE (FINAL FIX) ----------------
+    # FINDING EXACT SERVICE.....................
     for i in range(len(documents)):
         doc = documents[i]
         raw_meta = metadatas[i] if i < len(metadatas) else {}
@@ -59,7 +59,7 @@ async def ask_question(data: QueryRequest):
 
         service_name = parsed_meta.get("service_name", "").lower()
 
-        # ✅ SMART WORD MATCHING (FINAL FIX)
+        # SMART WORD MATCHING.....................................
         query_words = set(query_lower.split())
         service_words = set(service_name.split())
 
@@ -77,7 +77,7 @@ async def ask_question(data: QueryRequest):
             except:
                 metadata = {}
 
-    # ---------------- 🔥 FORM HANDLING ----------------
+    # FORM RESPONSE.........................................
     if any(word in query_lower for word in ["form", "application form", "apply form"]):
         if metadata and "forms" in metadata:
             return {
@@ -87,7 +87,7 @@ async def ask_question(data: QueryRequest):
         else:
             return {"answer": "Form not available for this service"}
 
-    # ---------------- RULE-BASED EXTRACTION ----------------
+    #RULE-BASED EXTRACTION..................................
     if "fee" in query_lower:
         if "Fees:" in context:
             answer = context.split("Fees:")[1].split("Application Process:")[0].strip()
@@ -110,7 +110,7 @@ async def ask_question(data: QueryRequest):
         else:
             return {"answer": "SORRY FOR INCONVENIENCE — SERVICE NOT FOUND"}
 
-    # ---------------- PROMPT ----------------
+    #PROMPT FOR OLLAMA...........................
     prompt = f"""
 You are a government services navigator.
 
@@ -132,7 +132,7 @@ Question:
 Answer:
 """
 
-    # ---------------- LLM ----------------
+    # OLLAMA..........................................
     try:
         response = ollama.chat(
             model="phi",
@@ -149,7 +149,7 @@ Answer:
     except:
         answer = context[:300] if context else "SORRY FOR INCONVENIENCE — SERVICE NOT FOUND"
 
-    # ---------------- CLEAN OUTPUT ----------------
+    # OUTPUT RESPONSE............................
     stop_phrases = [
         "Rules of the Puzzle",
         "Statement 1",
