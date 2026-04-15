@@ -5,7 +5,7 @@ import speech_recognition as sr
 import json
 import os
 
-# ==================== UI ====================
+# USER INTERFACE WITH TITLE
 st.set_page_config(
     page_title="🏛️ Local Government Services Navigator",
     page_icon="🏛️",
@@ -53,7 +53,7 @@ p, span, label {
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- HEADER ----------------
+#HEADER AND LOGO
 col1, col2 = st.columns([1, 5])
 with col1:
     st.image("logo.png", width=120)
@@ -62,7 +62,7 @@ with col2:
 
 st.write("Get government services, certificates & schemes instantly")
 
-# ---------------- SPEECH ----------------
+# SPEECH FUNCTION
 def recognize_speech():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -73,14 +73,13 @@ def recognize_speech():
     except:
         return ""
 
-# ---------------- PATH ----------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# ---------------- DB ----------------
+#DATA BASE FILES,,,,,,,,,,
 client = chromadb.PersistentClient(path="./chroma_db")
 collection = client.get_collection("services")
 
-# ---------------- SESSION ----------------
+#RESPONSE AT START
 if "messages" not in st.session_state:
     st.session_state.messages = [{
         "role": "assistant",
@@ -93,12 +92,12 @@ if "last_service" not in st.session_state:
 if "query" not in st.session_state:
     st.session_state.query = ""
 
-# ---------------- CHAT ----------------
+# CHAT BOX 
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# ---------------- INPUT ----------------
+# INPUT RECIEVER-
 with st.form("query_form"):
     query_input = st.text_input("Ask your question...", value=st.session_state.query)
 
@@ -115,12 +114,12 @@ with st.form("query_form"):
     if submit:
         st.session_state.query = query_input
 
-# ---------------- VARIABLES ----------------
+# VARIABLES
 submit = submit if "submit" in locals() else False
 query = st.session_state.query.strip()
 query_lower = query.lower()
 
-# ================= SERVICE MAP =================
+# SERVICE MAPPING
 service_map = {
     "aadhar": "Aadhaar Update",
     "aadhaar": "Aadhaar Update",
@@ -139,7 +138,7 @@ service_map = {
     "scholarship": "Scholarship"
 }
 
-# ================= INTENT KEYWORDS =================
+# INTENT RECOGNITION FROM KEYWORDS
 step_keywords = ["step", "steps", "procedure", "how to apply", "application"]
 fee_keywords = ["fee", "fees", "cost", "charges", "price"]
 doc_keywords = ["document", "documents", "required"]
@@ -156,24 +155,24 @@ is_ignore = any(w in query_lower for w in ignore_keywords)
 is_greeting = any(w in query_lower for w in greeting_keywords)
 is_followup = any(w in query_lower for w in followup_words)
 
-# ================= MAIN =================
+# MAIN CODE
 if submit and query:
 
     st.session_state.messages.append({"role": "user", "content": query})
 
-    # ---------------- GREETING (NO DB) ----------------
+    #GREETING 
     if is_greeting:
         st.markdown("👋 Hello! I can help you with government services.")
         st.session_state.query = ""
         st.stop()
 
-    # ---------------- IGNORE (NO DB) ----------------
+    # THANKING
     if is_ignore:
         st.markdown("👋 You're welcome!")
         st.session_state.query = ""
         st.stop()
 
-    # ================= SERVICE DETECTION =================
+    # SERVICE DETECTION 
     detected_service = None
     for k, v in service_map.items():
         if k in query_lower:
@@ -182,7 +181,7 @@ if submit and query:
 
     is_service_query = any(k in query_lower for k in service_map.keys())
 
-    # ================= INTENT ENGINE (STRICT GATE) =================
+    # INTENT RECOGNITION
 
     if is_global_request:
         service_to_use = "LIST_ALL_SERVICES"
@@ -194,13 +193,13 @@ if submit and query:
     elif is_followup and st.session_state.last_service:
         service_to_use = st.session_state.last_service
 
-    # ❌ UNKNOWN SERVICE → STOP COMPLETELY
+    # IF UNKNOWN SERVICE THEN STOP COMPLETELY
     elif is_service_query and not detected_service:
         st.markdown("❌ Service not available in this portal. Please check available government services.")
         st.session_state.query = ""
         st.stop()
 
-    # ❌ NON-SERVICE QUERY → STOP (IMPORTANT FIX)
+    #  NON-SERVICE QUERY THEN STOP
     elif not detected_service and not is_global_request and not is_followup:
         st.markdown("❌ I couldn't identify a valid government service. Please ask for available services.")
         st.session_state.query = ""
@@ -209,7 +208,7 @@ if submit and query:
     else:
         service_to_use = query
 
-    # ================= GLOBAL RESPONSE =================
+    # GLOBAL RESPONSE
     if service_to_use == "LIST_ALL_SERVICES":
 
         st.markdown("### 🏛️ Available Government Services")
@@ -225,12 +224,12 @@ if submit and query:
         st.session_state.query = ""
         st.stop()
 
-    # ================= FINAL SAFETY GATE (CRITICAL) =================
+    # IF NO SERVICES AVILABLE
     if service_to_use != "LIST_ALL_SERVICES" and not detected_service:
         st.markdown("❌ Service not recognized. No database lookup performed.")
         st.stop()
 
-    # ---------------- DB ----------------
+    # DB
     try:
         results = collection.query(
             query_texts=[service_to_use],
@@ -248,7 +247,7 @@ if submit and query:
         context = ""
         metadata = {}
 
-    # ================= RESPONSE =================
+    # RESPONSE BLOCK
     with st.chat_message("assistant"):
 
         apply_link = metadata.get("apply_link")
